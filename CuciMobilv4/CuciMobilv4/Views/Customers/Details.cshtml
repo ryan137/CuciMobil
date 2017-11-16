@@ -1,0 +1,89 @@
+﻿@model CuciMobilv4.tblCustomer
+
+@{
+    ViewBag.Title = "Details";
+}
+<h3>Detail Customer</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label">Nama Customer</label>
+        </dt>
+
+        <dd>
+            @ViewBag.Customer.NamaCustomer
+        </dd>
+
+        <dt>
+            <label class="control-label">No Handphone</label>
+        </dt>
+
+        <dd>
+            @ViewBag.Customer.NoHp
+        </dd>
+
+        <dt>
+            <label class="control-label">Alamat</label>
+        </dt>
+
+        <dd>
+            @ViewBag.Customer.alamat
+        </dd>
+
+    </dl>
+</div>
+
+<div class="box">
+    <div class="box-body">
+
+        <h4>Riwayat Transaksi</h4>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    No Transaksi
+                </th>
+                <th>
+                    Tanggal Transaksi
+                </th>
+                <th>
+                    No Kendaraan
+                </th>
+                <th>
+                    Status Pembayaran
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            @foreach (var item in ViewBag.Transaksi)
+            {
+                <tr>
+                    <td>
+                        @item.IdTransaksi
+                    </td>
+                    <td>
+                        @item.TanggalTransaksi
+                    </td>
+                    <td>
+                        @item.NoKendaraan
+                    </td>
+                    <td>
+                        @item.StatusPembayaran
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.IdTransaksi })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

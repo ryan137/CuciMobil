@@ -1,0 +1,50 @@
+﻿@model CuciMobilv4.tblHarga
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblHarga</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NamaJenisPencucian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamaJenisPencucian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kecil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kecil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sedang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sedang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.besar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.besar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdJenisPencucian }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

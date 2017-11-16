@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CuciMobilv4.tblTransaksi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>History Transaksi</h2>
+<div class="box">
+    <div class="box-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    No Transaksi
+                </th>
+                <th>
+                    Nama Pelanggan
+                </th>
+                <th>
+                    Nomor Hp
+                </th>
+                <th>
+                    Tanggal Transaksi
+                </th>
+                <th>
+                    No Kendaraan
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Total Harga
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdTransaksi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tblCustomer.NamaCustomer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tblCustomer.NoHp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TanggalTransaksi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoKendaraan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusPembayaran)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalHarga)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IdTransaksi }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdTransaksi })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</div>

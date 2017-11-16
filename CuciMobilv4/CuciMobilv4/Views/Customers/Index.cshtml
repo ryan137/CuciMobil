@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CuciMobilv4.tblCustomer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Data Customer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="box">
+    <div class="box-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NamaCustomer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoHp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.alamat)
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            @{
+                int i = 0;
+                foreach (var item in ViewBag.Customer)
+                {
+
+                    <tr>
+                        <td>
+                            @item.NamaCustomer
+                        </td>
+                        <td>
+                            @item.NoHp
+                        </td>
+                        <td>
+                            @item.alamat
+                        </td>
+                        <td>
+                            @Html.ActionLink((string)ViewBag.listText[i], "Create", "Transaksi", new { id = item.IdCustomer, status = ViewBag.listText[i] }, new { @class = ViewBag.listWarna[i] })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdCustomer }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.IdCustomer })
+                        </td>
+                    </tr>
+                    i++;
+                }
+
+            }
+
+
+        </table>
+    </div>
+</div>

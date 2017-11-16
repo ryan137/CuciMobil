@@ -1,0 +1,100 @@
+﻿@using CuciMobilv4.Models
+@model VM_Trans
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Tambah Transaksi</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+   
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input type="hidden" name="IdCustomer" value="@ViewBag.IdCustomer"/>
+        @Html.HiddenFor(model => model.StatusPembayaran)
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdCustomer, "Nama Customer", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label class="control-label">@ViewBag.NamaCustomer</label><label>&nbsp;(@Model.StatusPembayaran)</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdCustomer, "No Hp", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label class="control-label">@ViewBag.NoHp</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoKendaraan, "No Kendaraan", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoKendaraan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoKendaraan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ukuran</label>
+            <div class="col-md-10">
+                <select class="form-control" id="ukuran" name="ukuran">
+                    <option>Kecil</option>
+                    <option>Sedang</option>
+                    <option>Besar</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Jenis Pencucian</label>
+            <div class="col-md-10">
+                @for (var i = 0; i < Model.DetailTrans.Count(); i++)
+                {
+                    <p>
+                        @Html.CheckBoxFor(model => model.DetailTrans[i].IsSelected)
+                        @Html.HiddenFor(model => model.DetailTrans[i].IdJenisPencucian)
+                        @Model.DetailTrans[i].NamaPencucian
+                        <label>(K = @Model.DetailTrans[i].kecil S = @Model.DetailTrans[i].sedang B = @Model.DetailTrans[i].besar)</label>
+                    </p>
+                }
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.TanggalTransaksi, "Tanggal Transaksi", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TanggalTransaksi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TanggalTransaksi, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.TotalHarga, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TotalHarga, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalHarga, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

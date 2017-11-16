@@ -1,0 +1,58 @@
+﻿@model CuciMobilv4.tblTransaksi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblTransaksi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoKendaraan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoKendaraan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TanggalTransaksi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TanggalTransaksi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalHarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalHarga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblCustomer.NamaCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCustomer.NamaCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblHarga.NamaJenisPencucian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblHarga.NamaJenisPencucian)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTransaksi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
